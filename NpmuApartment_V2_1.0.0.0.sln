@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.33026.149
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NpmuApartment_V2_1._0._0._0", "NpmuApartment_V2_1.0.0.0\NpmuApartment_V2_1._0._0._0.csproj", "{6AF56C65-4142-4DDA-BD84-5BE7481DD9D6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6AF56C65-4142-4DDA-BD84-5BE7481DD9D6}.Debug|x86.ActiveCfg = Debug|x86
+		{6AF56C65-4142-4DDA-BD84-5BE7481DD9D6}.Debug|x86.Build.0 = Debug|x86
+		{6AF56C65-4142-4DDA-BD84-5BE7481DD9D6}.Release|x86.ActiveCfg = Release|x86
+		{6AF56C65-4142-4DDA-BD84-5BE7481DD9D6}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CB9A147E-2911-4C93-BD41-8875CCE4361D}
+	EndGlobalSection
+EndGlobal
