@@ -5,7 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Windows;
 
-namespace NpmuApartment_V2_1._0._0._0
+namespace NpmuApartment_V2
 {
     /// <summary>
     /// Interaction logic for App.xaml
@@ -16,5 +16,7 @@ namespace NpmuApartment_V2_1._0._0._0
         {
            this.InitializeComponent();
         }
+
+		
     }
 }
