@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using NpmuApartment_V2.ViewModels;
 
 namespace NpmuApartment_V2.Views
 {
@@ -22,6 +23,7 @@ namespace NpmuApartment_V2.Views
 		public MainWindow()
 		{
 			InitializeComponent();
+			this.DataContext = new LoginViewModel();
 		}
 	}
 }

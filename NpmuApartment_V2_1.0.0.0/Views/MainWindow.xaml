@@ -2,68 +2,10 @@
                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                 xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+                WindowState="Maximized"
+                ShowTitleBar="False"
+                Topmost="True"
                 Title="MainWindow" Height="1080" Width="1920">
 
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="4*"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
-        </Grid.RowDefinitions>
-
-        <Canvas Grid.ColumnSpan="100" Grid.RowSpan="100" Background="#3964C3"/>
-        <Image Grid.ColumnSpan="100" Grid.RowSpan="100" Source="/Assets/Img/login_bg.png"></Image>
-        <Grid Grid.Column="1" Grid.Row="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="0.5*"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="0.5*"></RowDefinition>
-            </Grid.RowDefinitions>
-
-            <Image Grid.Row="0" Source="/Assets/Img/logo_default.png" VerticalAlignment="Bottom"></Image>
-
-            <TextBox Grid.Row="1" Text="아파트 관리 프로그램" Foreground="White" Background="Transparent" FontSize="40" TextAlignment="Center" BorderBrush="Transparent"></TextBox>
-
-            <VirtualizingStackPanel Grid.Row="2" VerticalAlignment="Center">
-                <TextBox Text="{Binding id}"
-                         mah:TextBoxHelper.Watermark="ID" 
-                         mah:TextBoxHelper.UseFloatingWatermark="True" 
-                         mah:TextBoxHelper.ClearTextButton="True" 
-                         FontSize="40"
-                         Margin="10"
-                         VerticalAlignment="Center"></TextBox>
-
-                <TextBox Text="{Binding pw}"
-                         mah:TextBoxHelper.Watermark="Password" 
-                         mah:TextBoxHelper.UseFloatingWatermark="True" 
-                         mah:TextBoxHelper.ClearTextButton="True" 
-                         FontSize="40"
-                         Margin="10"
-                         VerticalAlignment="Center">
-
-                </TextBox>
-                <CheckBox Content="ID 기억하기" 
-                          mah:CheckBoxHelper.CheckCornerRadius="5" 
-                          Margin="10" 
-                          HorizontalAlignment="Left" 
-                          VerticalContentAlignment="Center">
-                    <CheckBox.ContentTemplate>
-                        <DataTemplate>
-                            <TextBox Text="ID 기억하기" Foreground="White" Background="Transparent" BorderBrush="Transparent"></TextBox>
-                        </DataTemplate>
-                    </CheckBox.ContentTemplate>
-                    <CheckBox.LayoutTransform><ScaleTransform ScaleX="2" ScaleY="2"></ScaleTransform>
-                    </CheckBox.LayoutTransform>
-                </CheckBox>
-            </VirtualizingStackPanel>
-
-            <Button Grid.Row="3" Content="로그인" Command="{Binding loginCommand}"  Background="#ffbf00" Height="80" VerticalAlignment="Top" FontSize="40" Margin="10"></Button>
-        </Grid>
-    </Grid>
+    <mah:MetroContentControl Content="{Binding}"/>
 </mah:MetroWindow>

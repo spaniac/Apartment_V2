@@ -68,6 +68,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="log4net, Version=2.0.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.15\lib\net45\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="MahApps.Metro, Version=2.0.0.0, Culture=neutral, PublicKeyToken=51482d6f650b2b3f, processorArchitecture=MSIL">
       <HintPath>..\packages\MahApps.Metro.2.4.10\lib\net452\MahApps.Metro.dll</HintPath>
     </Reference>
@@ -78,6 +81,8 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.ValueTuple.4.5.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
     </Reference>
@@ -105,12 +110,547 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Views\LoginView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CommonSettings.cs" />
+    <Compile Include="Helpers\RelayCommand.cs" />
+    <Compile Include="Models\AptMngModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AptMngModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AptMngModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AptMngModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AptMngModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HomeNet_InOutCarPtcl.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HomeNet_RegularCars.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HomeNet_ReserverCars.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LoginUserInfo.cs" />
+    <Compile Include="Models\PtnrAPRunPtcl.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrAPTAccount.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrAPTComnCd.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrAPTDoubleIoCarPtcl.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrAPTGuestRegistration.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrAPTHomeNetInfo.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrAPTIoCarPtcl.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrAPTParkInfo.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrAPTParkPtcl.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrAPTReservationInfo.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrAPTRgtkIssuPtcl.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrAPTRgTkIssuPtclHistory.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrAPTRSVHolidayInfo.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrAPTScrDtlInfo.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrAPTScrInfo.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrAPTScrRightInfo.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrAPVerInfo.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrAreaParkingInfo.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrAutoDisInfo.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrBarCodeDtlInfo.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrBarCodeInfo.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrBlackListCarInfo.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrBlackListSetInfo.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrBlackListViolatePtcl.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrBlackListViolateSumr.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrCalDeviceOptInfo.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrCardChrgPtcl.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrCashSendClosePtcl.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrCashSetInfo.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrChrgCnclPtcl.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrChrgPtcl.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrChrgPtclHICP.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrChrgSctSetInfo.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrDayCloseDisPtcl.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrDayClosePtcl.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrDaySetInfo.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrDirectOutDoubtPtcl.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrDisDisabled.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrDisGrpDtlInfo.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrDisGrpInfo.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrDisPtcl.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrDisSetInfo.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrDisSetInfoExt.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrDisSetInfoOcs.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrDisShpInfo.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrEntryHolidayInfo.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrEntryLmtInfo.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrForestCarCnt.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrGateDtlInfo.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrGateInfo.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrGetSeqMngInfo.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrHolidayInfo.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrIoCarPtcl.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrIPList.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrLedSetInfo.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrLocalGovCalPart.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrLprDeviceOptInfo.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrMacDtlInfo.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrMacErrSts.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrMacInfo.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrMacInfoFullCar.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrMaintenance.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrMileageChrgPtcl.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrMileageUsePtcl.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrMileageVehicleInfo.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrMissCash.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrMissChrgPtcl.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrMissDisPtcl.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrNonInCarPtcl.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrOCSParkUsageInfo.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrOCSPatientCarInfo.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrOneDayPayChrgPtcl.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrOneDayPayPtcl.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrParkAreaDtlInfo.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrParkAreaInfo.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrParkInfo.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrParkStatesInfo.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrPayChrgPtcl.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrPcmk.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrPcmkHoliDayInfo.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrPCPartInfo.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrPostSettlement.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrPremiumBenefitPtcl.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrReasonForBarrierControl.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrReceiptDtlPtcl.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrReceiptPtcl.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrRegDisPtcl.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrRgtGrpSetInfo.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrRgTkExtPtcl.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrRgTkFreeHolidayInfo.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrRgTkFreeSetInfo.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrRgTkIssuPtcl.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrSrvConnDtlInfo.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrSrvConnInfo.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrSwitchMacMatching.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrTCPLinkDtlInfo.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrTCPLinkInfo.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrTCPLinkSalePtcl.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrTraceViewInfo.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrUnPaidChargesPtcl.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrUnPaidCollectionPtcl.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrUnpaidRgTkPtcl_TechnoMart.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrUnStopInCarInfo.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrUsers.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrUserWorkingLog.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrValetReservedInfo.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrWEBDisPtcl.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrWorkingCloseDisPtcl.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PtnrWorkingClosePtcl.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_AccountLoad_S_Result.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_Account_D_Result.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_AlterColumnPgName_Result.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_APTParkInfo_S_Result.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_APTReserverCheck_S_Result.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_BlacklistSet_S_Result.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_BLRemoveBatch_Result.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_BLViolatePtclCreate_Result.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_Comn_S_Result.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_EntryHoliday_S_Result.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_EntryLmt_S_Result.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_External_Link_DiscountSearch2_Result.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_External_Link_DiscountSearch_All_Result.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_External_Link_DiscountSearch_Key_Result.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_External_Link_DiscountSearch_Result.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_External_Link_Discount_Result.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_External_Link_RegRegular_CODEIN_Result.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_External_Link_RegRegular_Result.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_External_Link_Search_All_Result.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_External_Link_Search_CarNo4_Result.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_External_Link_Search_Reg_Result.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagrams_Result.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_HomeNet_S_Result.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_LedSetInfo_D_Result.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_LedSetInfo_S_Result.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_Login_S_Result.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_MacInfoDtl_S_Result.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_MacInfo_D_Result.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_MacInfo_S_Result.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ParkInfo_D_Result.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ParkInfo_S_Result.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_RgTkGrpCnt_S_Result.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_RgTkHistory_IU_Result.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_RgTk_D_Result.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_RgTk_Excel_D_Result.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_RgTk_Excel_IU_Result.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_RgTk_IU_Result.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ScrDtlInfo_S_Result.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ScrGrp_S_Result.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ScrInfo_S_Result.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_SrvConnDtl_S_Result.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_SrvConnInfo_S_Result.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_UnpaidRgTk_TechnoMart_D_Result.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_UnpaidRgTk_TechnoMart_I_Result.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_UnpaidRgTk_TechnoMart_U_Result.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_UseScrGrop_S_Result.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagrams.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TEMP_ExternalDiscount.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\View_ForestHoliDay.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\View_ForestInOutCnt.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\View_InOutList.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\View_InOutList_forest.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\View_RegRegularList.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\View_RegRegularList_CODEIN.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\view_Sewon_InOut.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\view_Sewon_Reg.cs">
+      <DependentUpon>AptMngModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\LoginViewModel.cs" />
+    <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\ViewModelBase.cs" />
+    <Compile Include="Views\LoginView.xaml.cs">
+      <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -139,6 +679,13 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EntityDeploy Include="Models\AptMngModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>AptMngModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Models\AptMngModel.edmx.diagram">
+      <DependentUpon>AptMngModel.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -150,16 +697,37 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\" />
-    <Folder Include="ViewModels\" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Assets\Img\logo_default.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\Img\login_bg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Documents\nicepark\branches\common\NpmuCore\NpmuCore\NpmuCore.csproj">
+      <Project>{67eb4ee3-1f34-4f2f-b73f-cfdc7e4d0659}</Project>
+      <Name>NpmuCore</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\Documents\nicepark\branches\common\NpmuTypes\NpmuTypes\NpmuTypes.csproj">
+      <Project>{9c9ec64a-9a74-45e0-b174-165a76285a03}</Project>
+      <Name>NpmuTypes</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Models\AptMngModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AptMngModel.edmx</DependentUpon>
+      <LastGenOutput>AptMngModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\AptMngModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AptMngModel.edmx</DependentUpon>
+      <LastGenOutput>AptMngModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
